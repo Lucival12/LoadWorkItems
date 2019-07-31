@@ -1,5 +1,6 @@
 ﻿using Microsoft.TeamFoundation.WorkItemTracking.WebApi;
 using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
+using Microsoft.VisualStudio.Services.Client;
 using Microsoft.VisualStudio.Services.Common;
 using Microsoft.VisualStudio.Services.WebApi;
 using System;
@@ -17,11 +18,30 @@ namespace LoadWorkItems
     {
         static void Main(string[] args)
         {
-            string account = "lucivaldev";
-            string PAT = "itf3ivvmcoitgk6lxkhca6qbaobl4lxbgusqg7k3d3t4yqjiqhea";
+
+            string ulrAzure = "https://lucivaldev.visualstudio.com";
             string teamProject = "LoadWorkItems";
+            string tmp;
+
+            do
+            {
+                Console.WriteLine("Deseja deixa as configurações padrões?(S/N)");
+                tmp = Console.ReadLine();
+                tmp = tmp.ToUpper();
+            } while ((!tmp.Equals("S")) && (!tmp.Equals("N")));
+
+            if (tmp.Equals("N"))
+            {
+                Console.WriteLine("Digite a URL do Azure DevOps ");
+                ulrAzure = Console.ReadLine();
+
+                Console.WriteLine("Digite o	Nome do projeto");
+                teamProject = Console.ReadLine();
+
+            }
+
             VssConnection connection = null;
-            connection = new VssConnection(new Uri("https://" + account + ".visualstudio.com"), new VssBasicCredential(string.Empty, PAT));
+            connection = new VssConnection(new Uri(ulrAzure), new VssClientCredentials());
             WorkItemTrackingHttpClient witClient = connection.GetClient<WorkItemTrackingHttpClient>();
             string connectionString = String.Format(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=WorkItems;Integrated Security=True");
 
@@ -57,8 +77,9 @@ namespace LoadWorkItems
 
                                 int rows = cmd.ExecuteNonQuery();
                             }
-                        }
+                        }                       
                         conn.Close();
+                       
                     }
                 }
                 catch (SqlException ex)
@@ -69,6 +90,8 @@ namespace LoadWorkItems
 
 
             }
+            Console.WriteLine("Working Itens Atualizados");
+            Console.ReadLine();
 
         }
 
