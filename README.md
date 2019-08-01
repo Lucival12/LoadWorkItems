@@ -24,8 +24,9 @@
 1. Para verificar o funcionamento da api, com o projeto em execução, basta acessar a url: http://localhost:porta/api/item?&pageNumber=1&type , nela vai conter o xml gerado. 
 
 ## Instruções do Projeto LoadWorkItemsAngular
-1. Após subir o servidor, abrir a url http://localhost:4200/, nesta página vai listar os work items.
-2. Para ordena por data, basta clicar no icone ao lado da label Data e para filtrar pelo tipo é só selecionar uma das opções do dropdown.
+1. Baixar a pasta node_modules no link : https://1drv.ms/u/s!ApyBhHVHJ_49g25FiOX6-tT7nrwe, e extrair na pasta 'LoadWorkItemsAngular\LoadWorkItemsAngular-app'.
+2. Após subir o servidor, abrir a url http://localhost:4200/, nesta página vai listar os work items.
+3. Para ordena por data, basta clicar no icone ao lado da label Data e para filtrar pelo tipo é só selecionar uma das opções do dropdown.
     
     
   
