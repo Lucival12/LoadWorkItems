@@ -7,14 +7,14 @@
   <label for="exampleSelect1">Type</label>
   <div class="row">
       <div class="col-sm-3">
-          <select class="form-control" [formControl]="taskFilterControl">
+          <select class="form-control" [(ngModel)]="type" (ngModelChange)="getItemsPages();">
               <option *ngFor="let option of taskOptions" [ngValue]="option">
                 {{ option }}
               </option>
           </select>
       </div>
       <div class="col-sm-3">
-          <button class="btn btn-primary" *ngIf="taskFilterControl.value" (click)="taskFilterControl.setValue('')">
+          <button class="btn btn-primary" *ngIf="type" (click)="clearType()">
               Clear
           </button>
       </div>
@@ -23,15 +23,15 @@
 <table s class="table table-striped">
         <thead class="thead-default">
         <tr>
-          <th></th>
-          <th >Id</th>
-          <th>Titulo</th>
-          <th>Type</th>
-          <th (click)="sortTable()" >Data <i class="material-icons small">sort</i></th>
+          <th class="col-xs-1"></th>
+          <th class="col-xs-1">Id</th>
+          <th class="col-xs-6">Titulo</th>
+          <th class="col-xs-3">Type</th>
+          <th class="col-xs-2" (click)="sortTable()" >Data <i class="material-icons small">sort</i></th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of filteredItens$.value">
+        <tr *ngFor="let item of itens$.value">
           <th scope="row"></th>
           <td> {{ item.Id }}</td>
           <td> {{ item.Title }}</td>
@@ -40,3 +40,7 @@
         </tr>
         </tbody>
 </table>
+<div class="d-flex justify-content-center">
+      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+</div>
+   
