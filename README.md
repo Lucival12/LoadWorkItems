@@ -1,4 +1,4 @@
-# Desafio para candidatos à vaga de desenvolvedor Engenhos
+# Desafio para candidatos vaga de desenvolvedor Engenhos
 -	Precisamos que seja construído um console application capaz de se integrar a API do Azure DevOps para consultar todos os workitems de um projeto e salvá-los em um banco de dados
 -	Construção de um site (Angular ou React e com visual em Bootstrap padrão) para exibição em formato dos itens retornados com opção de ordenação por data e filtro por tipo de Workitem
 
